@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities;
-
-public class BaseEntity
+namespace Application.Contract
 {
-    public long? Id { get; set; }
+    public interface IUsermanagementContext
+    {
+    }
 }
