@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Core.Entities;
 
-public class BaseEntity
+public class FirmaInfo:BaseEntity
 {
-    public long? Id { get; set; }
+    public int typeData { get; set; }
+    public string value { get; set; }
 }
