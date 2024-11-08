@@ -18,10 +18,10 @@ public class UsersRepository : RepositoryBase<User>, IUsersRepository
     }
     public async Task<IEnumerable<User>> GetUserByEmail(string email)
     {
-        var orderList = await _dbContext.Users
+        var userList = await _dbContext.User
             .Where(o => o.Email == email)
             .ToListAsync();
-        return orderList;
+        return userList;
     }
    
 }

@@ -1,5 +1,4 @@
-﻿using Core.Contract;
-using Core.Entities;
+﻿using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ public class UsermanagementContext: DbContext
     {
 
     }
-    public DbSet<User> Users { get; set; }
-    public DbSet<FirmaInfo> FirmaInfos { get; set; }
-    public DbSet<MetaData> MetaDatas { get; set; }
+    public DbSet<User> User { get; set; }
+    public DbSet<FirmaInfo> FirmaInfo { get; set; }
+    public DbSet<MetaData> MetaData { get; set; }
 }

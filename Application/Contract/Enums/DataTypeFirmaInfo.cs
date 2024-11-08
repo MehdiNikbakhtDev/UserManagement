@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Contract
+namespace Application.Contract.Enums
 {
-    public interface IUsermanagementContext
+    public enum DataTypeFirmaInfo
     {
+        Name=1,
+        Address = 2,
+        PhoneNumber = 3,
     }
 }

@@ -22,6 +22,7 @@ public static class ConfigureServices
 
         serviceCollection.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
         serviceCollection.AddScoped<IUsersRepository, UsersRepository>();
+        serviceCollection.AddScoped<IFirmaRepository, FirmaRepository>();
         return serviceCollection;
     }
 }
