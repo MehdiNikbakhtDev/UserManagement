@@ -9,6 +9,6 @@ namespace Core.Entities;
 
 public class FirmaInfo:BaseEntity
 {
-    public int DataType { get; set; }
+    public int Type { get; set; }
     public string Value { get; set; }
 }
