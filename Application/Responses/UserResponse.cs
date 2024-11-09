@@ -11,6 +11,7 @@ public class UserResponse
     public string? Name { get; set; }
     public string? Password { get; set; }
     public int? Status { get; set; }
+    public string? RunGuid { get; set; }
     public bool? IsHauptUser { get; set; }
     public DateTime? InsertionDateTime { get; set; }
     public DateTime? LastUpdateDateTime { get; set; }

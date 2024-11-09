@@ -16,12 +16,24 @@ public class UsersRepository : RepositoryBase<User>, IUsersRepository
     public UsersRepository(UsermanagementContext dbContext) : base(dbContext)
     {
     }
-    public async Task<IEnumerable<User>> GetUserByEmail(string email)
+    public async Task<User> GetUserByEmail(string email)
+    {
+        var userInfo = await _dbContext.User
+            .FirstOrDefaultAsync(o => o.Email == email);
+        return userInfo;
+    }
+    public async Task<IEnumerable<User>> GetAllUser()
     {
         var userList = await _dbContext.User
-            .Where(o => o.Email == email)
             .ToListAsync();
         return userList;
     }
-   
+    public async Task<User> GetUserByguid(string? runGuid)
+    {
+        var userInfo= await _dbContext.User
+            .FirstOrDefaultAsync(f=>f.RunGuid==runGuid);
+        return userInfo;
+    }
+
+
 }

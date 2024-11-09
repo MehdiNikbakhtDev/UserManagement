@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
 using Infrastructure.Data;
+using Core.Helper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "User.API", Version = "v1" });
 });
+builder.Services.Configure<AppSettingsHelper>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.AddHealthChecks().Services.AddDbContext<UsermanagementContext>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

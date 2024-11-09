@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Repositories;
+using Core.Services;
+using Infrastructure.Services.Email;
 
 namespace Infrastructure.Extensions;
 public static class ConfigureServices
@@ -23,6 +25,7 @@ public static class ConfigureServices
         serviceCollection.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
         serviceCollection.AddScoped<IUsersRepository, UsersRepository>();
         serviceCollection.AddScoped<IFirmaRepository, FirmaRepository>();
+        serviceCollection.AddScoped<IEmailService, SmtpEmailService>();
         return serviceCollection;
     }
 }

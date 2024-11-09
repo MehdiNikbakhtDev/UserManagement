@@ -2,12 +2,16 @@
 using MediatR;
 
 namespace Application.Queries;
-public class GetUserByEmailQuery : IRequest<List<UserResponse>>
+public class GetUserByEmailQuery : IRequest<UserResponse>
 {
-    public string Email { get; set; }
+    public string? Email { get; set; }
 
-    public GetUserByEmailQuery(string email)
+    public GetUserByEmailQuery(string? email)
     {
         Email = email;
+    }
+    public GetUserByEmailQuery()
+    {
+        Email = "";
     }
 }

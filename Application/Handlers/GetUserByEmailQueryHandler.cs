@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.Handlers;
 
-public class GetUserByEmailQueryHandler: IRequestHandler<GetUserByEmailQuery, List<UserResponse>>
+public class GetUserByEmailQueryHandler: IRequestHandler<GetUserByEmailQuery, UserResponse>
 {
     private readonly IUsersRepository _userRepository;
     private readonly IMapper _mapper;
@@ -21,9 +21,9 @@ public class GetUserByEmailQueryHandler: IRequestHandler<GetUserByEmailQuery, Li
         _userRepository = userRepository;
         _mapper = mapper;
     }
-    public async Task<List<UserResponse>> Handle(GetUserByEmailQuery request, CancellationToken cancellationToken)
+    public async Task<UserResponse> Handle(GetUserByEmailQuery request, CancellationToken cancellationToken)
     {
-        var userList = await _userRepository.GetUserByEmail(request.Email);
-        return _mapper.Map<List<UserResponse>>(userList);
+        var userInfo = await _userRepository.GetUserByEmail(request.Email);
+        return _mapper.Map<UserResponse>(userInfo);
     }
 }

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Application.Contract.Enums
 {
-    public enum DataTypeFirmaInfo
+    public enum UserStatusEnum
     {
-        Name=1,
-        Address = 2,
-        PhoneNumber = 3,
+        Registered = 1,
+        Confirmed = 2,
     }
 }

@@ -29,11 +29,11 @@ public class InsertOrUpdateFirmaInfoCommandHandler : IRequestHandler<InsertOrUpd
     {
         var firmaInfoList = await _firmaRepository.GetFirmaInfo();
         #region [Insert or Update]
-        if (firmaInfoList.Any(a => a.DataType == (int)DataTypeFirmaInfo.Address))
+        if (firmaInfoList.Any(a => a.DataType == (int)DataTypeFirmaInfoEnum.Address))
         {
             if (!string.IsNullOrWhiteSpace(request.Address))
             {
-                var address = firmaInfoList.FirstOrDefault(a => a.DataType == (int)DataTypeFirmaInfo.Address);
+                var address = firmaInfoList.FirstOrDefault(a => a.DataType == (int)DataTypeFirmaInfoEnum.Address);
                 address.Value = request.Address;
                 await _firmaRepository.UpdateAsync(address);
             }
@@ -42,17 +42,17 @@ public class InsertOrUpdateFirmaInfoCommandHandler : IRequestHandler<InsertOrUpd
         {
             var address = new FirmaInfo
             {
-                DataType = (int)DataTypeFirmaInfo.Address,
+                DataType = (int)DataTypeFirmaInfoEnum.Address,
                 Value = request.Address
             };
             await _firmaRepository.AddAsync(address);
         }
 
-        if (firmaInfoList.Any(a => a.DataType == (int)DataTypeFirmaInfo.PhoneNumber))
+        if (firmaInfoList.Any(a => a.DataType == (int)DataTypeFirmaInfoEnum.PhoneNumber))
         {
             if (!string.IsNullOrWhiteSpace(request.PhoneNumber))
             {
-                var phoneNumber = firmaInfoList.FirstOrDefault(a => a.DataType == (int)DataTypeFirmaInfo.PhoneNumber);
+                var phoneNumber = firmaInfoList.FirstOrDefault(a => a.DataType == (int)DataTypeFirmaInfoEnum.PhoneNumber);
                 phoneNumber.Value = request.PhoneNumber;
                 await _firmaRepository.UpdateAsync(phoneNumber);
             }
@@ -61,17 +61,17 @@ public class InsertOrUpdateFirmaInfoCommandHandler : IRequestHandler<InsertOrUpd
         {
             var phoneNumber = new FirmaInfo
             {
-                DataType = (int)DataTypeFirmaInfo.PhoneNumber,
+                DataType = (int)DataTypeFirmaInfoEnum.PhoneNumber,
                 Value = request.PhoneNumber
             };
             await _firmaRepository.AddAsync(phoneNumber);
         }
 
-        if (firmaInfoList.Any(a => a.DataType == (int)DataTypeFirmaInfo.Name))
+        if (firmaInfoList.Any(a => a.DataType == (int)DataTypeFirmaInfoEnum.Name))
         {
             if (!string.IsNullOrWhiteSpace(request.Name))
             {
-                var name = firmaInfoList.FirstOrDefault(a => a.DataType == (int)DataTypeFirmaInfo.Name);
+                var name = firmaInfoList.FirstOrDefault(a => a.DataType == (int)DataTypeFirmaInfoEnum.Name);
                 name.Value = request.Name;
                 await _firmaRepository.UpdateAsync(name);
             }
@@ -80,7 +80,7 @@ public class InsertOrUpdateFirmaInfoCommandHandler : IRequestHandler<InsertOrUpd
         {
             var name = new FirmaInfo
             {
-                DataType = (int)DataTypeFirmaInfo.Name,
+                DataType = (int)DataTypeFirmaInfoEnum.Name,
                 Value = request.Name
             };
             await _firmaRepository.AddAsync(name);
@@ -90,9 +90,9 @@ public class InsertOrUpdateFirmaInfoCommandHandler : IRequestHandler<InsertOrUpd
         firmaInfoList = await _firmaRepository.GetFirmaInfo();
         var output = new FirmaResponse
         {
-            Address = firmaInfoList.FirstOrDefault(f => f.DataType == (int)DataTypeFirmaInfo.Address)?.Value,
-            Name = firmaInfoList.FirstOrDefault(f => f.DataType == (int)DataTypeFirmaInfo.Name)?.Value,
-            PhoneNumber = firmaInfoList.FirstOrDefault(f => f.DataType == (int)DataTypeFirmaInfo.PhoneNumber)?.Value
+            Address = firmaInfoList.FirstOrDefault(f => f.DataType == (int)DataTypeFirmaInfoEnum.Address)?.Value,
+            Name = firmaInfoList.FirstOrDefault(f => f.DataType == (int)DataTypeFirmaInfoEnum.Name)?.Value,
+            PhoneNumber = firmaInfoList.FirstOrDefault(f => f.DataType == (int)DataTypeFirmaInfoEnum.PhoneNumber)?.Value
         };
         return output;
     }
