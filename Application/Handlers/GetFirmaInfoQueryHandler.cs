@@ -27,9 +27,9 @@ public class GetFirmaInfoQueryHandler : IRequestHandler<GetFirmaInfoQuery, Firma
         var firmaInfoList = await _firmaRepository.GetFirmaInfo();
         var output = new FirmaResponse
         {
-            Address = firmaInfoList.FirstOrDefault(f => f.DataType == (int)DataTypeFirmaInfoEnum.Address)?.Value,
-            Name  = firmaInfoList.FirstOrDefault(f => f.DataType == (int)DataTypeFirmaInfoEnum.Name)?.Value,
-            PhoneNumber = firmaInfoList.FirstOrDefault(f => f.DataType == (int)DataTypeFirmaInfoEnum.PhoneNumber)?.Value
+            Address = firmaInfoList.FirstOrDefault(f => f.Type == (int)DataTypeFirmaInfoEnum.Address)?.Value,
+            Name  = firmaInfoList.FirstOrDefault(f => f.Type == (int)DataTypeFirmaInfoEnum.Name)?.Value,
+            PhoneNumber = firmaInfoList.FirstOrDefault(f => f.Type == (int)DataTypeFirmaInfoEnum.PhoneNumber)?.Value
         };
         return output;
     }

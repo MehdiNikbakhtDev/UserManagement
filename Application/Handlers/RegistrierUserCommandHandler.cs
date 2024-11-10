@@ -44,7 +44,7 @@ public class RegistrierUserCommandHandler : IRequestHandler<RegistrierUserComman
         }
 
         string runGuid = Guid.NewGuid().ToString();
-        string returnLink = $"{_appSettings.AppAddress}/UserConfirmation/{runGuid}";
+        string returnLink = $"{_appSettings.AppAddress}/user-confirmation/{runGuid}";
         string body = string.Format(_appSettings.EmailBody, returnLink);
         await _emailService.SendEmailAsync(request.Email, body);
         var userInfo = new User
