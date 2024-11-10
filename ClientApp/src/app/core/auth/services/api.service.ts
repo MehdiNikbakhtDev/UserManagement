@@ -11,7 +11,7 @@ export class AuthApiService {
 
   login(loginInput: LoginInput) {
     return this.http.post<LoginResult>(
-      `${UrlUtility.serverUrl}/login`,
+      `${UrlUtility.serverUrl}/LoginUser`,
       loginInput
     );
   }

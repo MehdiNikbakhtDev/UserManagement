@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: "materials";
+  src: url("./assets/fonts/material/MaterialIcons-Regular.ttf")
+      format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+* {
+  font-family: "materials" !important;
+}
+*:not(mat-icon) {
+  font-family:  sans-serif !important;
+}
+

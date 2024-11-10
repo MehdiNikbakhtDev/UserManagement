@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { NoAuthGuard } from './core/auth/guards/no-auth.guard';
-import { LoginComponent } from './core/auth/pages/login/login.component';
 import { AuthGuard } from './core/auth/guards/auth.guard';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { LoginComponent } from './core/auth/pages/login/loign.component';
 export const routes: Routes = [
     {
         path: '',
