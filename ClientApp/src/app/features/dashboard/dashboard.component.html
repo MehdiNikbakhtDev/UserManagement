@@ -1,1 +1,44 @@
-<p>dashboard works!</p>
+<div style="padding: 40px 80px">
+  <mat-card appearance="outlined">
+    <mat-card-header style="display: flex; justify-content: center">
+      <mat-card-title> User Information</mat-card-title>
+      <mat-card-subtitle>name:{{ userInformation.name }}</mat-card-subtitle>
+      <mat-card-subtitle>email:{{ userInformation.email }}</mat-card-subtitle>
+      <mat-card-subtitle
+        >dateTime:{{ userInformation.lastUpdateDateTime }}</mat-card-subtitle
+      >
+    </mat-card-header>
+  </mat-card>
+  <br />
+  <mat-card appearance="outlined">
+    <mat-card-header
+      style="display: flex; align-items: center; flex-direction: column"
+    >
+      <mat-card-title> Firma Information</mat-card-title>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="submit()"
+        style="display: flex; flex-direction: column"
+      >
+        <mat-form-field>
+          <mat-label>Firma Name</mat-label>
+          <input type="text" matInput formControlName="name" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Firma Address</mat-label>
+          <input type="text" matInput formControlName="address" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Firma Phone Number</mat-label>
+          <input type="text" matInput formControlName="phoneNumber" />
+        </mat-form-field>
+
+        @if(userInformation.isHauptUser){
+        <div class="flex justify-between">
+          <button type="submit" mat-button>Edit</button>
+        </div>
+        }
+      </form>
+    </mat-card-header>
+  </mat-card>
+</div>

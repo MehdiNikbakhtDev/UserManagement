@@ -1,24 +1,35 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  inject,
+} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Router, RouterLink } from '@angular/router';
 import { LoginResult } from '../../../core/auth/auth.model';
-import { AuthApiService, AuthCommonService } from '../../../core/auth/services';
+import { AuthCommonService } from '../../../core/auth/services';
+import { MaterialModule } from 'app/shared/modules/Material.module';
 @Component({
   selector: 'app-header',
   templateUrl: 'header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [RouterLink]
+  imports: [RouterLink, MaterialModule],
 })
-
-export class HeaderComponent implements OnInit {
-  user: LoginResult | null = null;
-
-  constructor(private authService: AuthCommonService, private authApiService: AuthApiService, private router: Router) { }
-
-  ngOnInit() {
-    this.user = this.authService.getLoginResult();
+export class HeaderComponent {
+  readonly dialog = inject(MatDialog);
+  loginResult: LoginResult | null;
+  constructor(
+    private localStorageService: AuthCommonService,
+    private router: Router
+  ) {
+    this.loginResult = this.localStorageService.getLoginResult() as LoginResult;
+  }
+  onLogOut() {
+    this.localStorageService.removeLoginResult();
+    this.router.navigate(['/login']);
   }
 }
-

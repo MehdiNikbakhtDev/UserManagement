@@ -10,6 +10,7 @@ public class UserResponse
     public string? Email { get; set; }
     public string? Name { get; set; }
     public string? Password { get; set; }
+    public string? token { get { return Guid.NewGuid().ToString(); } }
     public int? Status { get; set; }
     public string? RunGuid { get; set; }
     public bool? IsHauptUser { get; set; }

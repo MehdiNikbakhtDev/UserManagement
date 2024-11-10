@@ -3,6 +3,7 @@ import { NoAuthGuard } from './core/auth/guards/no-auth.guard';
 import { AuthGuard } from './core/auth/guards/auth.guard';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { LoginComponent } from './core/auth/pages/login/loign.component';
+import { DashboardResolverService } from './features/services/dashboard-resolver.service';
 export const routes: Routes = [
     {
         path: '',
@@ -20,6 +21,7 @@ export const routes: Routes = [
         path: 'dashboard',
         canActivate: [AuthGuard],
         canActivateChild: [AuthGuard],
+        resolve: { firmaInfo: DashboardResolverService },
         loadComponent: () =>
             import('../app/layouts/components/layout/layout.component').then((m) => m.LayoutComponent),
         children: [

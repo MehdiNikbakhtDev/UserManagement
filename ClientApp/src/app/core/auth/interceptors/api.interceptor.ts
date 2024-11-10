@@ -7,7 +7,7 @@ import { UrlUtility } from '../../../shared/utils';
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   const localStorageService = inject(AuthCommonService);
   const loginResult = localStorageService.getLoginResult() as LoginResult;
-  const nonAuthUrls = [`${UrlUtility.serverUrl}/user-confirmation`, `${UrlUtility.serverUrl}/login`];
+  const nonAuthUrls = [`${UrlUtility.serverUrl}/user-confirmation`, `${UrlUtility.serverUrl}/LoginUser`];
 
   if (!nonAuthUrls.includes(req.url)) {
     let reqWithToken = req.clone({

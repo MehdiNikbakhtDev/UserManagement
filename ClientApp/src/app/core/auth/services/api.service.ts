@@ -10,6 +10,7 @@ export class AuthApiService {
   constructor(private http: HttpClient) {}
 
   login(loginInput: LoginInput) {
+    const x = `${UrlUtility.serverUrl}/LoginUser`;
     return this.http.post<LoginResult>(
       `${UrlUtility.serverUrl}/LoginUser`,
       loginInput

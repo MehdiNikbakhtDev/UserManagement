@@ -1,3 +1,17 @@
-<header>
-  <div>test</div>
-</header>
+<mat-toolbar color="primary" class="flex justify-between">
+  <div class="flex">
+    <label>welcome </label>
+    <label class="px-2">{{ loginResult?.name }} </label>
+  </div>
+  <div class="flex items-center">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+      <mat-menu #menu="matMenu">
+        <button (click)="onLogOut()" mat-menu-item>
+          <span>logout</span>
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </mat-menu>
+    </button>
+  </div>
+</mat-toolbar>
