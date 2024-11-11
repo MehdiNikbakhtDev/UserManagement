@@ -34,10 +34,7 @@ public class RegistrierUserCommandHandler : IRequestHandler<RegistrierUserComman
     {
 
         var allUser = await _userRepository.GetAllUser();
-        if (request.IsHauptUser ?? false && allUser.Any(a => a.IsHauptUser == true))
-        {
-            throw new ApplicationException("Ein Benutzer hat sich bereits als Hauptbenutzer registriert");
-        }
+      
         if (allUser.Any(a => a.Email == request.Email))
         {
             throw new ApplicationException("Ein Benutzer hat sich bereits mit dieser E-Mail registriert");
@@ -53,7 +50,6 @@ public class RegistrierUserCommandHandler : IRequestHandler<RegistrierUserComman
             Name = request.Name,
             Password = null,
             RunGuid = runGuid,
-            IsHauptUser = request.IsHauptUser,
             Status = (int?)UserStatusEnum.Registered,
             InsertionDateTime = DateTime.Now,
             LastUpdateDateTime = DateTime.Now,

@@ -19,4 +19,5 @@ export class FeatureApiService {
   getFirmaInfo() {
     return this.http.get<UpdateFirma>(`${UrlUtility.serverUrl}/GetFirmaInfo`);
   }
+
 }

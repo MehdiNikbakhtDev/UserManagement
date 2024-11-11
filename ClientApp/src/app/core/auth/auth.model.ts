@@ -26,3 +26,19 @@ export class LoginResult {
   }
 }
 
+export class ConfirmUserInput {
+  runGuid: string;
+  password: string;
+  constructor() {
+    this.runGuid = '';
+    this.password = '';
+  }
+}
+export class RegistrierUserInput {
+  email: string;
+  name: string;
+  constructor() {
+    this.email = '';
+    this.name = '';
+  }
+}

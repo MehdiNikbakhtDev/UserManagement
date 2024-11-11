@@ -1,0 +1,27 @@
+<div style="padding: 40px 80px">
+  <mat-card appearance="outlined">
+    <mat-card-header
+      style="display: flex; align-items: center; flex-direction: column"
+    >
+      <mat-card-title> Set Password</mat-card-title>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="submit()"
+        style="display: flex; flex-direction: column"
+      >
+        <mat-form-field>
+          <mat-label>User Password</mat-label>
+          <input type="password" matInput formControlName="password" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Confirm Password</mat-label>
+          <input type="password" matInput formControlName="confirmpassword" />
+        </mat-form-field>
+
+        <div class="flex justify-between">
+          <button type="submit" mat-button>Submit Password</button>
+        </div>
+      </form>
+    </mat-card-header>
+  </mat-card>
+</div>

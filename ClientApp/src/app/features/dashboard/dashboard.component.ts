@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { LoginInput, LoginResult } from 'app/core/auth/auth.model';
-import { AuthCommonService } from 'app/core/auth/services';
+import { LoginInput, LoginResult, RegistrierUserInput } from 'app/core/auth/auth.model';
+import { AuthApiService, AuthCommonService } from 'app/core/auth/services';
 import { MaterialModule } from 'app/shared/modules/Material.module';
 import { FeatureApiService } from '../services/api.service';
 import { catchError, EMPTY, map, take } from 'rxjs';
@@ -18,10 +18,12 @@ import { ActivatedRoute } from '@angular/router';
 export class DashboardComponent implements OnInit {
   userInformation: LoginResult;
   form: any;
+  formNewUser: any;
   firmaInfo : UpdateFirma | undefined;
   constructor(
     private authCommonService: AuthCommonService,
     private featureApiService: FeatureApiService,
+    private authApiService: AuthApiService,
     private activatedRoute: ActivatedRoute
   ) {
     this.userInformation =
@@ -47,10 +49,15 @@ export class DashboardComponent implements OnInit {
         disabled: !this.userInformation.isHauptUser,
       }),
     });
+
+    this.formNewUser = new FormGroup({
+      newUserName: new FormControl(''),
+      newUserEmail: new FormControl('')
+    });
   }
 
   submit() {
-    if (this.form.valid) {
+    if (this.formNewUser.valid) {
       const updateFirmaInfo = new UpdateFirma();
       updateFirmaInfo.name = this.form.value.name as string;
       updateFirmaInfo.address = this.form.value.address as string;
@@ -62,6 +69,30 @@ export class DashboardComponent implements OnInit {
           take(1),
           map((res) => {
             alert('updated success');
+          }),
+          catchError((error) => {
+            alert(error.error);
+            return EMPTY;
+          })
+        )
+        .subscribe();
+    }
+  }
+
+  
+  submitNewUser() {
+    if (this.formNewUser.valid) {
+      debugger
+      const registrierUserInput = new RegistrierUserInput();
+      registrierUserInput.name = this.formNewUser.value.newUserName as string;
+      registrierUserInput.email = this.formNewUser.value.newUserEmail as string;
+
+      this.authApiService
+        .registrierUser(registrierUserInput)
+        .pipe(
+          take(1),
+          map((res) => {
+            alert('Set New User successfully');
           }),
           catchError((error) => {
             alert(error.error);

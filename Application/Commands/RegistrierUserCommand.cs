@@ -12,11 +12,9 @@ public class RegistrierUserCommand : IRequest<UserResponse>
 {
     public string? Email { get; set; }
     public string? Name { get; set; }
-    public bool? IsHauptUser { get; set; }
-    public RegistrierUserCommand(string? email, string? name, bool? isHauptUser)
+    public RegistrierUserCommand(string? email, string? name)
     {
         Email = email;
         Name = name;
-        IsHauptUser = isHauptUser;
     }
 }
