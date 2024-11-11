@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
 using Infrastructure.Data;
 using Core.Helper;
+using API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +49,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ordering.API v1"));
 }
 app.UseRouting();
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseCors("AllowAngularApp");
